@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import Footer from './Components/Menu/Footer';
+import Menu from './Components/Menu/Menu';
+import NewClaim from './Components/Menu/NewClaim';
+import SearchClaim from './Components/Menu/SearchClaim';
+
+function Divider(){
+  return <h1>____________________________________________________________</h1>
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  return <div>
+      <Menu />
+      <NewClaim />
+      <Footer />
+      <Divider />
+      <Menu />
+      <SearchClaim />
+      <Footer />
+
     </div>
-  );
 }
 
 export default App;

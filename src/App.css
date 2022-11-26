@@ -1,3 +1,130 @@
+.pageHeader{
+    
+  font-family: "Audiowide", sans-serif;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ccc;
+  width: 100%;
+  background-color: rgb(93, 150, 189);
+  font-size: 15px;
+  text-shadow: 3px 4px 3px #ababab; 
+}
+.menuNav{
+  text-shadow: none;
+}
+.footer {
+  width: 110%;
+  background-color: red;  
+  color: white;
+  text-align: center;
+  display: block;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0px;
+  overflow: hidden;
+  border: 1px solid rgb(8, 8, 8);
+  background-color: #333;
+  width: 100%;
+}
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+body {
+  font-size: 14px;
+  font-family: "Trirong", serif;
+  background: rgb(201, 200, 200);
+}
+.container {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #c7c7c9;
+  border: 3px rgb(56, 56, 56) solid;
+  padding: 20px;
+}
+form label {
+  min-width: 150px;
+  display: block;
+  float: left;
+  margin-right: 10px;
+}
+input, select {
+  margin-bottom: 10px;
+  display: block;
+}
+h2{
+  font-size: 20px;
+}
+.claimtype{
+  overflow: hidden;   
+}
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #017c4f;
+  color: white;
+}
+button{
+  padding: 10px;
+  width: 80px;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 12px;
+  border-radius: 8px;
+}
+button:hover {
+background:  rgb(37, 221, 37);
+color: white;
+box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+
+  
+}
+@media only screen and (min-width: 641px) and (max-width: 1024px){
+.container {
+   width:  600px;
+}
+}
+@media screen and (max-width:640px) {   
+  .container{
+    width: 95%;
+    max-width: 95%
+  }
+  .mini-heading{
+      display: none;
+  }
+}
+/* 
 .App {
   text-align: center;
 }
@@ -35,4 +162,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

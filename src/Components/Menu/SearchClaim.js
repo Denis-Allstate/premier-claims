@@ -1,3 +1,5 @@
+import TransactionsTable from "../Transactions/TransactionsTable";
+
 const SearchClaim = () => {
     return <div className="container">
         <h2>Search Claims</h2>
@@ -11,7 +13,7 @@ const SearchClaim = () => {
         <input type="text" name="surname" id="surnameSearch" placeholder="Smith" required />
 
         <button type="submit">Search</button>
-
+        <TransactionsTable />
     </form>
     </div>
 }

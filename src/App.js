@@ -6,7 +6,7 @@ import SearchClaim from './Components/Menu/SearchClaim';
 import TransactionsTable from './Components/Transactions/TransactionsTable';
 
 function Divider(){
-  return <h1>____________________________________________________________</h1>
+  return <h1>___________________________________________________________________________________________________________________</h1>
 }
 
 function App() {
@@ -17,7 +17,6 @@ function App() {
       <Divider />
       <Menu />
       <SearchClaim />
-      <TransactionsTable />
       <Footer />
 
     </div>

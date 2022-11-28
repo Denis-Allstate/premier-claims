@@ -7,7 +7,7 @@ return <div className="container">
 
     <label htmlFor="title">Title: </label>
         <select name="title" id="title" required>
-            <option value="" disabled selected>Please Select</option>
+            <option value="" >Please Select</option>
             <option value="mr">Mr</option>
             <option value="ms">Ms</option>
             <option value="miss">Miss</option>
@@ -27,20 +27,20 @@ return <div className="container">
     <label htmlFor="phone">Phone Number: </label>
     <input type="tel" id="phone" name="phone" placeholder="0800-123-456" />
 
-    <div class="claimtype">
+    <div className="claimtype">
         <p>Select claim type:</p>
-            <label class="radiooptions">
-                <input type="radio" name="optradio" checked/>Auto
+            <label className="radiooptions">
+                <input type="radio" name="optradio" defaultChecked/>Auto
             </label>
-            <label class="radiooptions">
+            <label className="radiooptions">
                 <input type="radio" name="optradio" />Motorcycle
             </label>
-            <label class="radiooptions">
+            <label className="radiooptions">
                 <input type="radio" name="optradio" />Property   
             </label>
     </div>
     <p><label htmlFor="description">Enter details of claim:</label></p>
-  <textarea id="description" name="description" rows="4" cols="50" placeholder="Please enter all relevant claim details and attach any relevant docmentation.">
+  <textarea id="description" name="description" rows="4" cols="50" placeholder="Please enter all relevant claim details and attach any relevant documentation.">
   </textarea>
   <br />
     <button type="submit">Submit</button><br />

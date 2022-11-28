@@ -1,7 +1,7 @@
 export const getClaimDetails = () => {
     return [
         {id: 101, claimamount: 700, surname: "Smith", email: "", phone: "", status: "Open", claimdate: "2021-01-31", claim_id:"21216652", claim_type: 1, claim_details: ""},
-        {id: 102, claimamount: 1200, surname: "Dunne", email: "", phone: "", status: "EUR", claimdate: "2019-02-01", claim_id:"21216653", claim_type: 1, claim_details: ""},
+        {id: 102, claimamount: 1200, surname: "Dunne", email: "", phone: "", status: "Open", claimdate: "2019-02-01", claim_id:"21216653", claim_type: 1, claim_details: ""},
         {id: 103, claimamount: 400, surname: "Ryan", email: "", phone: "", status: "Open", claimdate: "2020-02-01", claim_id:"21216654", claim_type: 1, claim_details: ""},
         {id: 104, claimamount: 750, surname: "Campbell", email: "", phone: "", status: "Pending", claimdate: "2019-02-02", claim_id:"21216655", claim_type: 2, claim_details: ""},
         {id: 105, claimamount: 1300, surname: "Johns", email: "",  phone: "", status: "Open", claimdate: "2018-01-31", claim_id:"21216656", claim_type: 2, claim_details: ""},

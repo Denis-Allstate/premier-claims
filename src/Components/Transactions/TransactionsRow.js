@@ -7,6 +7,7 @@ const TransactionsRow = (props) => {
             <td>{props.status}</td>
             <td>{props.claimdate}</td>
             <td>{props.claimamount}</td>
+            <td><button type="submit">View</button> </td>
         </tr>
     )
 }

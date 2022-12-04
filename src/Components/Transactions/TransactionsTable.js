@@ -10,15 +10,17 @@ const TransactionsTable = () => {
 
         const uniqueClaims = allClaims.filter( 
             (claim_id,index) => allClaims.indexOf(claim_id) === index);
-        const [selectedClaim, setSelectedClaim] = useState(-"");
+        const [selectedClaim, setSelectedClaim] = useState("");
         const changeClaim = (event) => {
             const option = event.target.options.selectedIndex;
-            setSelectedClaim(uniqueClaims[option]);
+            console.log(option);
+            setSelectedClaim(uniqueClaims[option -1]);
             console.log(event.target.value);
         }
         const [checked, setChecked] = useState(false);
         function toggle(){
             setChecked((checked) => !checked);
+           
           }
 
 return (<div>
@@ -39,7 +41,7 @@ return (<div>
                 <th>Status</th>
                 <th>Claim date</th>
                 <th>Claim Amount</th>
-                <th> </th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -48,7 +50,7 @@ return (<div>
                 {claims
                 .filter (claim => claim.claim_id === selectedClaim)
                 .map( (claim, index) => {
-                return selectedClaim && !checked    && <TransactionsRow key={index} id={claim.id} surname={claim.surname}
+                return selectedClaim && !checked && <TransactionsRow key={index} id={claim.id} surname={claim.surname}
                 status = {claim.status}  claimdate = {claim.claimdate} 
                 claimamount={claim.claimamount}   />
             }   )   }

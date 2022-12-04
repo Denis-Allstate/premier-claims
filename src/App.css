@@ -4,7 +4,8 @@
   padding: 5px;
   text-align: center;
   border: 1px solid #ccc;
-  width: 100%;
+  width:120%;
+  margin-left:-4px;
   background-color: rgb(93, 150, 189);
   font-size: 15px;
   text-shadow: 3px 4px 3px #ababab; 
@@ -13,7 +14,7 @@
   text-shadow: none;
 }
 .footer {
-  width: 110%;
+  width: 120%;
   background-color: red;  
   color: white;
   text-align: center;

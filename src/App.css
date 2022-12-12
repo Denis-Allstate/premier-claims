@@ -1,7 +1,7 @@
 .pageHeader{
     
   font-family: "Audiowide", sans-serif;
-  padding: 5px;
+  padding: 10px;
   text-align: center;
   border: 1px solid #ccc;
   width:120%;
@@ -19,11 +19,12 @@
   color: white;
   text-align: center;
   display: block;
+  padding: 10px;
 }
 ul {
   list-style-type: none;
-  margin: 0;
-  padding: 0px;
+  margin: 0px;
+  padding: 1px;
   overflow: hidden;
   border: 1px solid rgb(8, 8, 8);
   background-color: #333;
@@ -56,6 +57,8 @@ body {
   background: #c7c7c9;
   border: 3px rgb(56, 56, 56) solid;
   padding: 20px;
+  margin-bottom: 10%;
+  margin-top: 5%;
 }
 form label {
   min-width: 150px;

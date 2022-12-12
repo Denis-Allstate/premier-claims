@@ -9,6 +9,7 @@ const Menu = () =>{
                     <li><Link to="/">Main Menu</Link></li>
                     <li><Link to="/add">New Claim</Link></li>
                     <li><Link to="/find">Search Claims</Link></li>
+                    <li><Link to="/open">Open Claims</Link></li>
                     <li><Link to="/archive">Archive</Link></li>
                     <li><Link to="/">Log Out</Link></li>
                 </ul>

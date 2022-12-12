@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Archive from './Components/Menu/Archive';
 import Footer from './Components/Menu/Footer';
 import Menu from './Components/Menu/Menu';
 import NewClaim from './Components/Menu/NewClaim';
+import Open from './Components/Menu/Open';
 import SearchClaim from './Components/Menu/SearchClaim';
 
 function App() {
@@ -13,6 +15,8 @@ function App() {
       <Menu />
       <Routes>
       <Route path="/add" element={<NewClaim />} />
+      <Route path="/archive" element={<Archive />} />
+      <Route path="/open" element={<Open />} />
       <Route path="/find" element = {
         <SearchClaim searchTerm={searchTerm} setSearchTerm={setSearchTerm} />}
       />

@@ -7,6 +7,7 @@ import Menu from './Components/Menu/Menu';
 import NewClaim from './Components/Menu/NewClaim';
 import Open from './Components/Menu/Open';
 import SearchClaim from './Components/Menu/SearchClaim';
+import FindTransactionsPage from './Components/Transactions/FindTransactionsPage';
 
 function App() {
   const [searchTerm, setSearchTerm] =useState("");
@@ -18,10 +19,10 @@ function App() {
       <Route path="/archive" element={<Archive />} />
       <Route path="/open" element={<Open />} />
       <Route path="/find" element = {
-        <SearchClaim searchTerm={searchTerm} setSearchTerm={setSearchTerm} />}
+        <FindTransactionsPage searchTerm={searchTerm} setSearchTerm={setSearchTerm} />}
       />
       <Route path="/find/:orderId" element = {
-        <SearchClaim searchTerm={searchTerm} setSearchTerm={setSearchTerm} />}
+        <FindTransactionsPage searchTerm={searchTerm} setSearchTerm={setSearchTerm} />}
     />
       <Route path="/" element = {<h1>Welome to the payments page</h1>}/>
       <Route path="*" element = {<h1>Sorry - this page doesn't exist</h1>}/>

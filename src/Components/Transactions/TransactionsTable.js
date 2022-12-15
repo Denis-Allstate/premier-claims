@@ -24,14 +24,14 @@ const TransactionsTable = (props) => {
         //   }
 
 return (<div>
-       <div className= "claimSelector"> 
+      {props.searchTerm === "" && <div className= "claimSelector"> 
         Select Claim Number:<select onChange={changeClaim} defaultValue={selectedClaim}>
         <option value="" disabled={true}> ---select---</option>
         {uniqueClaims.map (claim_id => <option key={claim_id} value={claim_id}>{claim_id}</option>)}
     </select>
     {/* Select to display open claims: <input type="checkbox" value={checked} onChange={toggle}></input>
       <p>{checked ? "checked" : "not Checked"}</p> */}
-    </div>  
+    </div>  }
     <table className="transactionsTable">
         <thead>
             <tr>

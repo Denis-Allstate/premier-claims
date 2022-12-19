@@ -7,6 +7,7 @@ import Menu from './Components/Menu/Menu';
 import NewClaim from './Components/Menu/NewClaim';
 import Open from './Components/Menu/Open';
 import SearchClaim from './Components/Menu/SearchClaim';
+import View from './Components/Menu/View';
 import FindTransactionsPage from './Components/Transactions/FindTransactionsPage';
 
 function App() {
@@ -24,7 +25,9 @@ function App() {
       <Route path="/find/:claim_id" element = {
         <FindTransactionsPage searchTerm={searchTerm} setSearchTerm={setSearchTerm} />}
     />
-      <Route path="/" element = {<h1>Welome to the payments page</h1>}/>
+     <Route path="/view" element = {<View />}
+    />
+      <Route path="/" element = {<h1>Welome to the Premier Claims</h1>}/>
       <Route path="*" element = {<h1>Sorry - this page doesn't exist</h1>}/>
 
     </Routes>

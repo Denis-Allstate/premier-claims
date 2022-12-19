@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import TransactionsTable from "../Transactions/TransactionsTable";
+import View from "../Menu/View";
 
 const TransactionsRow = (props) => {
     const navigate = useNavigate();
@@ -9,8 +9,8 @@ const TransactionsRow = (props) => {
     const viewClaim =(event)=>{
             event.preventDefault(); 
             const claimId = props.claim_id;
-            navigate(`/find/${props.claim_id}`);
-            navigate(TransactionsTable,{state:{id:claimId}});
+            navigate(`/view/${props.claim_id}`);
+            navigate(View,{state:{id:claimId}});
         
     }
 

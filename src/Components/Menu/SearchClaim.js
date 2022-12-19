@@ -40,7 +40,7 @@ const SearchClaim = (props) => {
         <button type="submit"disabled={!valid || !touched}> Search</button>
         <button onClick={clearForm} >Reset</button>
         
-        <TransactionsTable />
+        {/* <TransactionsTable /> */}
     </form>
     </div>
 }

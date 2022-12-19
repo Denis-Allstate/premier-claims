@@ -20,6 +20,7 @@ const SearchClaim = (props) => {
         event.preventDefault();
         props.setSearchTerm(localSearchTerm);
         navigate(`/find/${localSearchTerm}`);
+        navigate(TransactionsTable);
     }
     const clearForm = () => {
         setLocalSearchTerm("");

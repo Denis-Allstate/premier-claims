@@ -1,3 +1,4 @@
+import NewClaim from "../Menu/NewClaim"
 export const getClaimDetails = () => {
     return [
         {id: 101, claimamount: 700, fname: "John", surname: "Smith", email: "", phone: "", status: "Open", claimdate: "2021-01-31", claim_id:"21216652", claim_type: 1, claim_details: ""},
@@ -16,4 +17,9 @@ export const getClaimDetails = () => {
         
     }
     export const addNewTransaction = (claim) => {
+        const updateClaimData = [getClaimDetails];
+        updateClaimData.push(claim);
+        console.log("Returned claims"+getClaimDetails);
+        
+        
     }

@@ -2,9 +2,11 @@ import { useState } from "react";
 import { getClaimDetails } from "../Data/DataFunction";
 import './Transactions.css';
 import TransactionsRow from "./TransactionsRow";
+import {useLocation} from "react-router-dom";
 
 const TransactionsTable = (props) => {
-
+    const location = useLocation();
+    //const claimId = location.state.id;
     const claims = getClaimDetails();
     const allClaims = claims.map ( claim => claim.claim_id);
 
@@ -20,18 +22,17 @@ const TransactionsTable = (props) => {
         // const [checked, setChecked] = useState(false);
         // function toggle(){
         //     setChecked((checked) => !checked);
-           
+
         //   }
 
 return (<div>
-      {props.searchTerm === "" && <div className= "claimSelector"> 
-        Select Claim Number:<select onChange={changeClaim} defaultValue={selectedClaim}>
+       <div className= "claimSelector"  > 
+
+        Select Claim Number:<select onChange={changeClaim} defaultValue="">
         <option value="" disabled={true}> ---select---</option>
         {uniqueClaims.map (claim_id => <option key={claim_id} value={claim_id}>{claim_id}</option>)}
     </select>
-    {/* Select to display open claims: <input type="checkbox" value={checked} onChange={toggle}></input>
-      <p>{checked ? "checked" : "not Checked"}</p> */}
-    </div>  }
+    </div>  
     <table className="transactionsTable">
         <thead>
             <tr>
@@ -52,6 +53,24 @@ return (<div>
                 claimamount={claim.claimamount}   />
             }   )   }
         </tbody>
+        <tbody>
+                {claims
+                .filter (claim =>  claim.claim_id === props.searchTerm)
+                .map( (claim, index) => {
+                return <TransactionsRow key={index} claim_id={claim.claim_id} surname={claim.surname}
+                status = {claim.status}  claimdate = {claim.claimdate} 
+                claimamount={claim.claimamount}   />
+            }   )   }
+        </tbody>
+            {/* <tbody>
+                    {claims
+                    .filter (claim =>  claim.claim_id === claimId)
+                    .map( (claim, index) => {
+                    return claimId && <TransactionsRow key={index} claim_id={claim.claim_id} surname={claim.surname}
+                    status = {claim.status}  claimdate = {claim.claimdate} 
+                    claimamount={claim.claimamount}   />
+                }   )   }
+            </tbody> */}
     </table>
     </div>
 )

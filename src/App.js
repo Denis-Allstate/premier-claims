@@ -21,7 +21,7 @@ function App() {
       <Route path="/find" element = {
         <FindTransactionsPage searchTerm={searchTerm} setSearchTerm={setSearchTerm} />}
       />
-      <Route path="/find/:orderId" element = {
+      <Route path="/find/:claim_id" element = {
         <FindTransactionsPage searchTerm={searchTerm} setSearchTerm={setSearchTerm} />}
     />
       <Route path="/" element = {<h1>Welome to the payments page</h1>}/>

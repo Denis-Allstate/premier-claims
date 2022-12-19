@@ -1,7 +1,8 @@
 import { useReducer, useState } from "react";
-import { addNewTransaction } from "../Data/DataFunction";
+import { addNewTransaction, getClaimDetails } from "../Data/DataFunction";
 
 const NewClaim = () => {
+
     const [message, setMessage] = useState("");
 
     const initialNewTransactionState = {id : "", claimamount : "",fname: "", surname :"", email :"",
@@ -20,24 +21,31 @@ const NewClaim = () => {
         //event.target.id = the field
        // event.target.value  = the value
        dispatch({field : event.target.id, value : event.target.value});
-    }
 
+    }
+    // const addNewTransaction = (newTransaction) => {
+    //     const updatedClaimData = [getClaimDetails];
+    //     updatedClaimData.push(newTransaction);
+    //     dispatch(updatedClaimData);
+    // }
     const handleSubmit = (event) => {
         event.preventDefault();
         setMessage("Saving...");
-        addNewTransaction(newTransaction)
-            .then( response => {
-                if (response.status === 200) {
-                    setMessage("New transaction added with id " + response.data.id);
-                }
-                else {
-                    setMessage("Something went wrong - status code was " + response.status);
-                }
+        
+        addNewTransaction(newTransaction);
+        setMessage("Saved");
+            // .then( response => {
+            //     if (response.status === 200) {
+            //         setMessage("New transaction added with id " + response.data.id);
+            //     }
+            //     else {
+            //         setMessage("Something went wrong - status code was " + response.status);
+            //     }
                 
-            } )
-            .catch( error => {
-                setMessage("Something went wrong - " + error);
-            })
+            // } )
+            // .catch( error => {
+            //     setMessage("Something went wrong - " + error);
+            // })
     } 
 
 return <div className="container" onSubmit={handleSubmit}>
@@ -46,22 +54,13 @@ return <div className="container" onSubmit={handleSubmit}>
     <label htmlFor="id" >Policy Number: </label>
     <input type="text" name="id" id="id" placeholder="Policy Number" value={newTransaction.id} onChange={handleChange} />
     {/* // {     claim_id:"21216652", claim_type: 1, */}
-    
-    <label htmlFor="title">Title: </label>
-        <select name="title" id="title" required >
-            <option value="" >Please Select</option>
-            <option value="mr">Mr</option>
-            <option value="ms">Ms</option>
-            <option value="miss">Miss</option>
-            <option value="dr">Dr</option>
-        </select>
  
     <label htmlFor="fname" >First name: </label>
-    <input type="text" name="fname" id="fname" placeholder="John" required value={newTransaction.fname} onChange={handleChange}/>
+    <input maxLength='15' type="text" name="fname" id="fname" placeholder="John" required value={newTransaction.fname} onChange={handleChange}/>
                 
                
     <label htmlFor="surname" >Surname: </label>
-    <input type="text" name="surname" id="surname" placeholder="Smih" required value={newTransaction.surname} onChange={handleChange} />
+    <input maxLength='15' type="text" name="surname" id="surname" placeholder="Smih" required value={newTransaction.surname} onChange={handleChange} />
 
     <label htmlFor="email">Email Address: </label>
     <input type="email" id="email" name="email" placeholder="exampe@example.com" value={newTransaction.email} onChange={handleChange}/>   
@@ -69,7 +68,7 @@ return <div className="container" onSubmit={handleSubmit}>
     <label htmlFor="phone">Phone Number: </label>
     <input type="tel" id="phone" name="phone" placeholder="0800-123-456" value={newTransaction.phone} onChange={handleChange}/>
 
-    <div className="claimtype">
+    {/* <div className="claimtype">
         <p>Select claim type:</p>
             <label className="radiooptions">
                 <input type="radio" name="optradio" defaultChecked/>Auto
@@ -81,7 +80,7 @@ return <div className="container" onSubmit={handleSubmit}>
                 <input type="radio" name="optradio" />Property   
             </label>
     </div>
-    <br />
+    <br /> */}
     <label htmlFor="claimamount">Amount</label>
         <input type="text"  id="claimamount" value={newTransaction.claimamount} onChange={handleChange}/>
 
@@ -90,11 +89,12 @@ return <div className="container" onSubmit={handleSubmit}>
         
         
     <p><label htmlFor="claim_details">Enter details of claim:</label></p>
-  <textarea id="claim_details" name="claim_details" rows="4" cols="50" placeholder="Please enter all relevant claim details and attach any relevant documentation."
+  <textarea minLength='5' id="claim_details" name="claim_details" rows="4" cols="50" placeholder="Please enter all relevant claim details and attach any relevant documentation."
   value={newTransaction.claim_details} onChange={handleChange}>
   </textarea>
   <br />
-    <button type="submit">Submit</button><br />
+    <input type="submit" value="Submit" className="submit" />
+    <div>{  message}</div>
     </form>
     </div>
     }

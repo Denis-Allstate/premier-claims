@@ -1,7 +1,7 @@
 import NewClaim from "../Menu/NewClaim"
 export const getClaimDetails = () => {
     return [
-        {id: 101, claimamount: 700, fname: "John", surname: "Smith", email: "", phone: "", status: "Open", claimdate: "2021-01-31", claim_id:"21216652", claim_type: 1, claim_details: ""},
+        {id: 101, claimamount: 700, fname: "John", surname: "Smith", email: "john.smith@gmai.com", phone: "02098353654", status: "Open", claimdate: "2021-01-31", claim_id:"21216652", claim_type: 1, claim_details: "Burst pipe in kitchen. Causing damage to floor and ceiling."},
         {id: 102, claimamount: 1200, fname: "John",surname: "Dunne", email: "", phone: "", status: "Open", claimdate: "2019-02-01", claim_id:"21216653", claim_type: 1, claim_details: ""},
         {id: 103, claimamount: 400, fname: "John",surname: "Ryan", email: "", phone: "", status: "Open", claimdate: "2020-02-01", claim_id:"21216654", claim_type: 1, claim_details: ""},
         {id: 104, claimamount: 750, fname: "John",surname: "Campbell", email: "", phone: "", status: "Pending", claimdate: "2019-02-02", claim_id:"21216655", claim_type: 2, claim_details: ""},

@@ -17,10 +17,11 @@ const TransactionsTable = (props) => {
 
         const uniqueClaims = allClaims.filter( 
             (claim_id,index) => allClaims.indexOf(claim_id) === index);
+            console.log("TT unique"+uniqueClaims);
         const [selectedClaim, setSelectedClaim] = useState("");
         const changeClaim = (event) => {
             const option = event.target.options.selectedIndex;
-            console.log(option);
+            console.log("opton"+option);
             setSelectedClaim(uniqueClaims[option -1]);
             console.log(event.target.value);
         }

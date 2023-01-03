@@ -2,12 +2,14 @@ import { useReducer, useState } from "react";
 import { addNewTransaction } from "../Data/DataFunction";
 
 const View = (props) => {
-debugger;
+    
+
 const [message, setMessage] = useState("");
 
     const viewTransactionState = {id : props.claim_id, claimamount : props.claimamount, fname: props.fname, surname : props.surname, email :props.email,
     phone :props.phone, status : props.status, claimdate : props.claimdate, claim_id: props.claim_id,
     claim_type: props.claim_type, claim_details:props.claim_details}
+    
     const formReducer = (state, data) => {
         return {...state, [data.field] : data.value}
     }

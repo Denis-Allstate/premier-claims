@@ -17,6 +17,7 @@ function App() {
       <Menu />
       <Routes>
       <Route path="/add" element={<NewClaim />} />
+      <Route path="/add/:claim_id" element={<NewClaim />} />
       <Route path="/archive" element={<Archive />} />
       <Route path="/open" element={<Open />} />
       <Route path="/find" element = {

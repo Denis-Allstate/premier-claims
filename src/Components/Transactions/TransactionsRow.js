@@ -11,7 +11,7 @@ console.log("props Transacton row"+props.id);
             <td>{props.claimdate}</td>
             <td>{props.claimamount}</td>
             <td>
-                <Link to={"/add/" +props.surname}>
+                <Link to={"/add/" +props.claim_id}>
                     <span className="update">Update</span>
                 </Link>
             </td>

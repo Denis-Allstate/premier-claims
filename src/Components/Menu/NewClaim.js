@@ -3,14 +3,14 @@ import { useParams } from "react-router-dom";
 import { addNewTransaction, getClaimDetails } from "../Data/DataFunction";
 
 const NewClaim = (props) => {
-
+ 
     const params = useParams();
     const isUpdate = params.claim_id;
 
     const [message, setMessage] = useState("");
 
     const claims = getClaimDetails();
-    const selectedClaim = claims.at(0);
+    const selectedClaim = claims.find((claims) => claims.claim_id === isUpdate) ;
     
     const editTransactionState = {id : selectedClaim.id, claimamount : selectedClaim.claimamount, fname: selectedClaim.fname, surname : selectedClaim.surname, email :selectedClaim.email,
         phone :selectedClaim.phone, status : selectedClaim.status, claimdate : selectedClaim.claimdate, claim_id: selectedClaim.claim_id,
@@ -64,7 +64,6 @@ const NewClaim = (props) => {
             //     setMessage("Something went wrong - " + error);
             // })
     } 
-
 return <div className="container" onSubmit={handleSubmit}>
     <h2>{!isUpdate ? 'Submit a claim' : 'Edit Claim'}</h2>
     <form>
@@ -77,10 +76,11 @@ return <div className="container" onSubmit={handleSubmit}>
                 
                
     <label htmlFor="surname" >Surname: </label>
-    <input maxLength='15' type="text" name="surname" id="surname" placeholder="Smih" required value={!isUpdate ? newTransaction.surname : selectedClaim.surname} onChange={handleChange} />
+    <input maxLength='15' type="text" name="surname" id="surname" placeholder="Smith" required value={!isUpdate ? newTransaction.surname : selectedClaim.surname} onChange={handleChange} />
 
     <label htmlFor="email">Email Address: </label>
-    <input type="email" id="email" name="email" placeholder="exampe@example.com" value={!isUpdate ? newTransaction.email : selectedClaim.email} onChange={handleChange}/>   
+    <input type="email" id="email" name="email" placeholder="exampe@example.com" value={!isUpdate ? newTransaction.email : selectedClaim.email} onChange={handleChange}
+    pattern />   
 
     <label htmlFor="phone">Phone Number: </label>
     <input type="tel" id="phone" name="phone" placeholder="0800-123-456" value={!isUpdate ? newTransaction.phone : selectedClaim.phone} onChange={handleChange}/>
@@ -93,17 +93,21 @@ return <div className="container" onSubmit={handleSubmit}>
                 <option value ="Motorcycle">Motorcycle</option>
             </select>
     <br />
-    <label htmlFor="claimamount">Amount</label>
+    <label htmlFor="claimamount">Amount:</label>
         <input type="text"  id="claimamount" value={!isUpdate ? newTransaction.claimamount : selectedClaim.claimamount} onChange={handleChange}/>
 
-        <label htmlFor="claimdate">Claim Date</label>
+        <label htmlFor="claimdate">Claim Date:</label>
         <input type="claimdate" id="claimdate" value={!isUpdate ? newTransaction.claimdate : selectedClaim.claimdate} onChange={handleChange}/>
-        
+
+        <label htmlFor="status">Status:</label>
+        <input type="text"  id="status" value={!isUpdate ? newTransaction.status : selectedClaim.status} onChange={handleChange}/>
+ 
         
     <p><label htmlFor="claim_details">Enter details of claim:</label></p>
   <textarea minLength='5' id="claim_details" name="claim_details" rows="4" cols="50" placeholder="Please enter all relevant claim details and attach any relevant documentation."
   value={!isUpdate ? newTransaction.claim_details : selectedClaim.claim_details} onChange={handleChange}>
   </textarea>
+  <button id="save">Save</button>
   <br />
     <input type="submit" value="Submit" className="submit" />
     <div>{  message}</div>

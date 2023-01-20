@@ -1,8 +1,29 @@
-import { getClaimDetails } from "../Data/DataFunction";
+import { useEffect, useState } from "react";
+import { getAllClaimsForStatus, getClaimDetails } from "../Data/DataFunction";
 import TransactionsRow from "../Transactions/TransactionsRow";
 
 const Open = ()=>{
-    const claims = getClaimDetails();
+    const [claims, setClaims] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(()=>{
+        
+        getAllClaimsForStatus()
+            .then ( response => {
+                if (response.status === 200) {
+                    setIsLoading(false);
+                    setClaims(response.data);
+                }
+                else {
+                    console.log("something went wrong", response.status)
+                }
+            })
+            .catch( error => {
+                console.log("something went wrong", error);
+            })
+        }, []);
+
+    
     return<div className="container">
         <h2>Open Claims</h2>
         <h3>View all open and pending claims on the system.</h3>
@@ -19,12 +40,11 @@ const Open = ()=>{
             </tr>
         </thead>
         <tbody>
-            {claims
-                .filter (claim => claim.status === "Open" || claim.status === "Pending")
-                .map( (claim, index) => {
-                return <TransactionsRow key={index} claim_id={claim.claim_id} surname={claim.surname}
-                status = {claim.status}  claimdate = {claim.claimdate} 
-                claimamount={claim.claimamount}   />
+            
+            {claims.map( (claim, index) => {
+                return <TransactionsRow key={index} claim_id={claim.id} surname={claim.lastName}
+                status = {claim.status}  claimdate = {claim.claimDate} 
+                claimamount={claim.claimAmount}   />
             }   )   }
              
         </tbody>

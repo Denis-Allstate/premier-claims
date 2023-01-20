@@ -1,19 +1,34 @@
-import { useState } from "react";
-import { getClaimDetails } from "../Data/DataFunction";
+import { useEffect, useState } from "react";
+import { getAllClaims } from "../Data/DataFunction";
 import './Transactions.css';
 import TransactionsRow from "./TransactionsRow";
-import {useLocation} from "react-router-dom";
 
 const TransactionsTable = (props) => {
-    // const location = useLocation();
-    // console.log(location);
-    // let claimId = null;
-    // if (location.state !==null){
-    //     claimId = location.state.id;
-    //     console.log("claimId"+claimId);
-    // }
-    const claims = getClaimDetails();
-    const allClaims = claims.map ( claim => claim.claim_id);
+
+    const [claims, setClaims] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+
+    useEffect(()=>{
+        
+        getAllClaims()
+            .then ( response => {
+                if (response.status === 200) {
+                    setIsLoading(false);
+                    setClaims(response.data);
+                }
+                else {
+                    console.log("something went wrong", response.status)
+                }
+            })
+            .catch( error => {
+                console.log("something went wrong", error);
+            })
+        }, []);
+    
+
+     const allClaims = claims.map ( claim => claim.claimId);
+     console.log("allclaims"+claims)
 
         const uniqueClaims = allClaims.filter( 
             (claim_id,index) => allClaims.indexOf(claim_id) === index);
@@ -25,18 +40,13 @@ const TransactionsTable = (props) => {
             setSelectedClaim(uniqueClaims[option -1]);
             console.log(event.target.value);
         }
-        // const [checked, setChecked] = useState(false);
-        // function toggle(){
-        //     setChecked((checked) => !checked);
-
-        //   }
 
 return (<div>
        <div className= "container1"  > 
 
         Select Claim Number:<select onChange={changeClaim} defaultValue="">
         <option value="" disabled={true}> ---select---</option>
-        {uniqueClaims.map (claim_id => <option key={claim_id} value={claim_id}>{claim_id}</option>)}
+        {uniqueClaims.map (claimId => <option key={claimId} value={claimId}>{claimId}</option>)}
     </select>
      
     <table className="transactionsTable">
@@ -52,30 +62,20 @@ return (<div>
         </thead>
         <tbody>
                 {claims
-                .filter (claim =>  claim.claim_id === selectedClaim)
+                .filter (claim =>  claim.claimId === selectedClaim)
                 .map( (claim, index) => {
-                return selectedClaim && <TransactionsRow key={index} claim_id={claim.claim_id} surname={claim.surname}
-                status = {claim.status}  claimdate = {claim.claimdate} 
-                claimamount={claim.claimamount}   />
+                return selectedClaim && <TransactionsRow key={index} claim_id={claim.claimId} surname={claim.lastName}
+                status = {claim.status}  claimdate = {claim.claimDate} 
+                claimamount={claim.claimAmount}   />
             }   )   }
-        {/* </tbody>
-        <tbody> */}
+        
                 {claims
-                .filter (claim =>  claim.claim_id === props.searchTerm)
+                .filter (claim =>  claim.claimId === props.searchTerm)
                 .map( (claim, index) => {
-                return <TransactionsRow key={index} claim_id={claim.claim_id} surname={claim.surname}
-                status = {claim.status}  claimdate = {claim.claimdate} 
-                claimamount={claim.claimamount}   />
+                return <TransactionsRow key={index} claim_id={claim.claimId} surname={claim.lastName}
+                status = {claim.status}  claimdate = {claim.claimDate} 
+                claimamount={claim.claimAmount}   />
             }   )   }
-        {/* </tbody>
-            { <tbody> */}
-                    {/* {claims
-                    .filter (claim =>  claim.claim_id === claimId)
-                    .map( (claim, index) => {
-                    return claimId && <TransactionsRow key={index} claim_id={claim.claim_id} surname={claim.surname}
-                    status = {claim.status}  claimdate = {claim.claimdate} 
-                    claimamount={claim.claimamount}   />
-                }   )   } */}
             </tbody> 
     </table>
     </div>  

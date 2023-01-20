@@ -1,8 +1,27 @@
-import { getClaimDetails } from "../Data/DataFunction";
+import { useEffect, useState } from "react";
+import { getAllClaimsForStatusClosed } from "../Data/DataFunction";
 import TransactionsRow from "../Transactions/TransactionsRow";
 
 const Archive =() =>{
-    const claims = getClaimDetails();
+    const [claims, setClaims] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(()=>{
+        
+        getAllClaimsForStatusClosed()
+            .then ( response => {
+                if (response.status === 200) {
+                    setIsLoading(false);
+                    setClaims(response.data);
+                }
+                else {
+                    console.log("something went wrong", response.status)
+                }
+            })
+            .catch( error => {
+                console.log("something went wrong", error);
+            })
+        }, []);
     return<div className="container">
         <h2>Claims Archive</h2>
         <h3>Select a claim below to view previous activity.</h3>
@@ -20,11 +39,10 @@ const Archive =() =>{
         </thead>
         <tbody>
             {claims
-                .filter (claim => claim.status === "Closed")
                 .map( (claim, index) => {
-                return <TransactionsRow key={index} claim_id={claim.claim_id} surname={claim.surname}
-                status = {claim.status}  claimdate = {claim.claimdate} 
-                claimamount={claim.claimamount}   />
+                return <TransactionsRow key={index} claim_id={claim.id} surname={claim.lastName}
+                status = {claim.status}  claimdate = {claim.claimDate} 
+                claimamount={claim.claimAmount}   />
             }   )   }
              
         </tbody>

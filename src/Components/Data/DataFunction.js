@@ -1,4 +1,4 @@
-import NewClaim from "../Menu/NewClaim"
+import axios from "axios";
 export const getClaimDetails = () => {
     return [
         {id: 101, claimamount: 700, fname: "John", surname: "Smith", email: "john.smith@gmai.com", phone: "02098353654", status: "Open", claimdate: "2021-01-31", claim_id:"21216652", claim_type: 1, claim_details: "Burst pipe in kitchen. Causing damage to floor and ceiling."},
@@ -16,10 +16,35 @@ export const getClaimDetails = () => {
     ]
         
     }
+
+
+    export const getAllClaims  = () => {
+        return axios({url : "http://localhost:8080/api/claim",
+                method: "GET", 
+                headers: {"Accept" : "application/json"}                
+                })
+    }
+    export const getAllClaimsForId  = (Id) => {
+        return axios({url : "http://localhost:8080/api/claim/"+Id,
+                method: "GET", 
+                headers: {"Accept" : "application/json"}
+                })
+    }
+   
+    export const getAllClaimsForStatus = (claimStatus) => {
+        return axios({url : "http://localhost:8080/api/claim?status=Open",
+                method: "GET", 
+                headers: {"Accept" : "application/json"}
+                })
+    }
+    export const getAllClaimsForStatusClosed = (claimStatus) => {
+        return axios({url : "http://localhost:8080/api/claim?status=Closed",
+                method: "GET", 
+                headers: {"Accept" : "application/json"}
+                })
+    }
     export const addNewTransaction = (claim) => {
         const updateClaimData = [getClaimDetails];
         updateClaimData.push(claim);
-        console.log("Returned claims"+getClaimDetails);
-        
-        
+        console.log("Returned claims"+getClaimDetails);   
     }

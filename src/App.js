@@ -10,6 +10,7 @@ import Open from './Components/Menu/Open';
 import View from './Components/Menu/View';
 import FindTransactionsPage from './Components/Transactions/FindTransactionsPage';
 import Notes from './Components/Menu/Notes';
+import AddOrEditClaim from './Components/Menu/AddOrEditClaim';
 
 function App() {
   const [searchTerm, setSearchTerm] =useState("");
@@ -17,8 +18,8 @@ function App() {
   return <BrowserRouter>
       <Menu />
       <Routes>
-      <Route path="/add" element={<NewClaim />} />
-      <Route path="/add/:claim_id" element={<NewClaim />} />
+      <Route path="/add" element={<AddOrEditClaim />} />
+      <Route path="/add/:claim_id" element={<AddOrEditClaim />} />
       <Route path="/archive" element={<Archive />} />
       <Route path="/open" element={<Open />} />
       <Route path="/Tasks" element={<Tasks />} />

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllClaimsForStatus, getClaimDetails } from "../Data/DataFunction";
+import { getAllClaimsForStatus  } from "../Data/DataFunction";
 import TransactionsRow from "../Transactions/TransactionsRow";
 
 const Open = ()=>{
@@ -28,7 +28,6 @@ const Open = ()=>{
         <h2>Open Claims</h2>
         <h3>View all open and pending claims on the system.</h3>
  <table className="transactionsTable">
-    
         <thead>
             <tr>
                 <th>Claim Id</th>
@@ -40,19 +39,13 @@ const Open = ()=>{
             </tr>
         </thead>
         <tbody>
-            
             {claims.map( (claim, index) => {
                 return <TransactionsRow key={index} claim_id={claim.id} surname={claim.lastName}
                 status = {claim.status}  claimdate = {claim.claimDate} 
                 claimamount={claim.claimAmount}   />
-            }   )   }
-             
+            }   )   } 
         </tbody>
     </table>
-
-
     </div>
-
-
 }
 export default Open;

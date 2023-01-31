@@ -16,11 +16,11 @@ const AddOrEditClaim = () => {
         setIsLoading(true);
         setChangingState(true);
        }else{
-
         setChangingState(false);
         const selectedClaimId =params.claim_id;
         if (selectedClaimId == null){
             setIsLoading(false);
+            setChangingState(true);
             setInitialNewTransactionState({id :"", claimAmount : "",firstName: "", lastName :"", email :"",
             phone :"", status : "Open", claimDate : new Date().toISOString().slice(0,10) , claimId: "",
             claimType: "Property",claimDetails:"" });
@@ -40,7 +40,6 @@ const AddOrEditClaim = () => {
                 console.log("something went wrong", error);
             })
         }}}, [params.claim_id, changingState]);
-    
 return <>
 {!isLoading && <NewClaim initialNewTransactionState = {initialNewTransactionState} />}
 </>

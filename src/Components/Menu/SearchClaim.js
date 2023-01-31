@@ -19,8 +19,10 @@ const SearchClaim = (props) => {
     const doSearch  = (event) => {
         event.preventDefault();
         props.setSearchTerm(localSearchTerm);
+        console.log("localsearchterm"+localSearchTerm)
         navigate(`/find/${localSearchTerm}`);
         navigate(TransactionsTable);
+        console.log("LST"+localSearchTerm)
     }
     const clearForm = () => {
         setLocalSearchTerm("");
@@ -39,8 +41,6 @@ const SearchClaim = (props) => {
         style ={{border: valid ? "1px solid #000" : "2px solid #f00"}}/>
         <button type="submit"disabled={!valid || !touched}> Search</button>
         <button onClick={clearForm} >Reset</button>
-        
-        {/* <TransactionsTable /> */}
     </form>
     </div>
 }

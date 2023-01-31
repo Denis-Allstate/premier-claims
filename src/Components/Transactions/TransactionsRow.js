@@ -1,8 +1,14 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 
 const TransactionsRow = (props) => {
-console.log("props Transacton row"+props.id);
+const [isUpdateAvailable, setIsUpdateAvailable] = useState(false);
+useEffect(()=> {
+    if(props.status === "Open" || props.status === "Pending"){
+        setIsUpdateAvailable (true);
+    }
+}, []);
     return (
         <tr>
             <td>{props.claim_id}</td>
@@ -12,7 +18,7 @@ console.log("props Transacton row"+props.id);
             <td>{props.claimamount}</td>
             <td>
                 <Link to={"/add/" +props.claim_id}>
-                    <span className="update">Update</span>
+                    {isUpdateAvailable && <> <span className="update">Update</span></>}
                 </Link>
             </td>
         </tr>

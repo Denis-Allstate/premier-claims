@@ -23,7 +23,7 @@ const AddOrEditClaim = () => {
             setIsLoading(false);
             setInitialNewTransactionState({id :"", claimAmount : "",firstName: "", lastName :"", email :"",
             phone :"", status : "Open", claimDate : new Date().toISOString().slice(0,10) , claimId: "",
-            claimType: "",claimDetails:"" });
+            claimType: "Property",claimDetails:"" });
         }else{
         getAllClaimsForId(selectedClaimId)
             .then ( response => {

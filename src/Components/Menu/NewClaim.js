@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import { addNewTransaction, getAllClaimsForId, updateTransaction } from "../Data/DataFunction";
 
 const NewClaim = (props) => {
-    // const [selectedClaim, setSelectedClaim] = useState({});
     
     const params = useParams();
     const isUpdate = params.claim_id;
@@ -14,7 +13,7 @@ const NewClaim = (props) => {
         }
     const [newTransaction, dispatch] = useReducer(formReducer, props.initialNewTransactionState);
     const [textarea,setTextArea] =useState();
-    const [myClaimType, setMyClaimType] = useState("Property");
+    const [myClaimType, setMyClaimType] = useState();
 
     const handleChange = (event) => {
         console.log(event);
@@ -22,10 +21,8 @@ const NewClaim = (props) => {
        setTextArea(event.target.value);
        console.log("textarea"+event.target.value)
        setMyClaimType(event.target.value);
-    }
-    const handleUpdate = (event) => {
-        console.log(event);
-       
+       console.log("myclaimtype"+myClaimType)
+
     }
     
     const handleSubmit = (event) => {
@@ -92,15 +89,15 @@ return <>
         <input type="text" id="year" placeholder="2023" value={ newTransaction.year } onChange={handleChange}/>
 
         <label htmlFor="make">Make:</label>
-        <input type="text" id="make" Placeholder="Ford" value={ newTransaction.make } onChange={handleChange}/>
+        <input type="text" id="make" placeholder="Ford" value={ newTransaction.make } onChange={handleChange}/>
         <label htmlFor="model">Model:</label>
-        <input type="text" id="model" Placeholder="F150" value={ newTransaction.model } onChange={handleChange}/>
+        <input type="text" id="model" placeholder="F150" value={ newTransaction.model } onChange={handleChange}/>
         </>}
 
         {myClaimType === 'Pet'&&<><label htmlFor="typeAnimal">Animal Type:</label>
-        <input type="text" id="typeAnimal" Placeholder="Dog/Cat" value={ newTransaction.typeAnimal } onChange={handleChange}/>
+        <input type="text" id="typeAnimal" placeholder="Dog/Cat" value={ newTransaction.typeAnimal } onChange={handleChange}/>
         <label htmlFor="breed">Breed:</label>
-        <input type="text" id="breed" Placeholder="Boxer" value={ newTransaction.breed } onChange={handleChange}/>
+        <input type="text" id="breed" placeholder="Boxer" value={ newTransaction.breed } onChange={handleChange}/>
         </>}
         <label htmlFor="status">Status:</label>
         <input type="text"  id="status" value={ newTransaction.status } onChange={handleChange}/>

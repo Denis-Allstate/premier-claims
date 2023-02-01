@@ -9,7 +9,7 @@ const AddOrEditClaim = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [initialNewTransactionState, setInitialNewTransactionState] = useState({id :"", claimAmount : "",firstName: "", lastName :"", email :"",
     phone :"", status : "Open", claimDate : new Date().toISOString().slice(0,10) , claimId: "",
-    claimType: "",claimDetails:"" });
+    claimType: "",claimDetails:"", address:"", year:"", make:"", model:"", typeAnimal:"", breed:"" });
 
     useEffect(()=>{
        if(!changingState && !isLoading){
@@ -23,7 +23,7 @@ const AddOrEditClaim = () => {
             setChangingState(true);
             setInitialNewTransactionState({id :"", claimAmount : "",firstName: "", lastName :"", email :"",
             phone :"", status : "Open", claimDate : new Date().toISOString().slice(0,10) , claimId: "",
-            claimType: "Property",claimDetails:"" });
+            claimType: "",claimDetails:"", address:"", year:"", make:"", model:"", typeAnimal:"", breed:"" });
         }else{
         getAllClaimsForId(selectedClaimId)
             .then ( response => {

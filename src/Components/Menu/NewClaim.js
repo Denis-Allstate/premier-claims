@@ -1,9 +1,14 @@
-import { useEffect, useReducer, useState } from "react";
+import { useReducer, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { addNewTransaction, getAllClaimsForId, updateTransaction } from "../Data/DataFunction";
+import { addNewTransaction } from "../Data/DataFunction";
 
 const NewClaim = (props) => {
-    
+    const lines = ["1. Open - New Claim " , 
+        " 2. Pending - Currently being worked on/Awaiting Payment " ,
+        " 3. Rejected - Above threshold or not valid claim " ,
+        " 4. Closed - Paid"
+      ];
+      
     const params = useParams();
     const isUpdate = params.claim_id;
     const [message, setMessage] = useState("");
@@ -12,19 +17,20 @@ const NewClaim = (props) => {
         return {...state, [data.field] : data.value}
         }
     const [newTransaction, dispatch] = useReducer(formReducer, props.initialNewTransactionState);
-    const [textarea,setTextArea] =useState();
     const [myClaimType, setMyClaimType] = useState();
 
     const handleChange = (event) => {
         console.log(event);
        dispatch({field : event.target.id, value : event.target.value});
-       setTextArea(event.target.value);
        console.log("textarea"+event.target.value)
+    }
+    const handleChangeType = (event) => {
+        console.log(event);
+        dispatch({field : event.target.id, value : event.target.value});
        setMyClaimType(event.target.value);
-       console.log("myclaimtype"+myClaimType)
-
     }
     
+
     const handleSubmit = (event) => {
         event.preventDefault();
         setMessage("Saving...");
@@ -67,24 +73,30 @@ return <>
 
     
         <p>Select claim type:</p>
-            <select value={newTransaction.claimType} onChange={handleChange}>
+            <select id= "claimType" value={newTransaction.claimType} onChange={handleChangeType} >
+                <option value="" disabled={true}> ---select---</option>
                 <option value="Property">Property</option>
                 <option value="Motor">Motor</option>
                 <option value ="Pet">Pet</option>
             </select>
     <br />
-    <label htmlFor="claimAmount">Amount:</label>
-        <input type="text"  id="claimAmount" value={newTransaction.claimAmount} onChange={handleChange}/>
+    {/* <label htmlFor="claimAmount">Amount:</label>
+        <input type="text"  id="claimAmount" value={newTransaction.claimAmount} onChange={handleChange}/> */}
+  <div style={{position: 'relative'}}>
+  <label htmlFor="claimAmount">Amount:</label>
+  <input type="text" id="claimAmount" value={newTransaction.claimAmount} onChange={handleChange} />
+  <div id="anim" style={{position: 'absolute',bottom:-5, right: 330}}>
+    <span className="tooltip" data-tooltip="Claim must be below $500 or full claim will be required">?</span>
+  </div>
+  </div>
         <label htmlFor="claimDate">Claim Date:</label>
         <input type="claimDate" id="claimDate" value={ newTransaction.claimDate } onChange={handleChange}/>
-
-
-        {myClaimType === 'Property'&&<><label htmlFor="Address">Address:</label><textarea minLength='5' id="Address" rows="4" cols="50" placeholder="Please enter address of property claim is being made for."
-                value={newTransaction.address} onChange={handleChange} /></>}
         
 
-       
-       
+        {myClaimType === 'Property'&&<><label htmlFor="address">Address:</label>
+        <textarea minLength='5' id="address" rows="4" cols="50" placeholder="Please enter address of property claim is being made for."
+                value={newTransaction.address} onChange={handleChange} /></>}
+        
         {myClaimType === 'Motor'&&<><label htmlFor="year">Year:</label>
         <input type="text" id="year" placeholder="2023" value={ newTransaction.year } onChange={handleChange}/>
 
@@ -99,9 +111,14 @@ return <>
         <label htmlFor="breed">Breed:</label>
         <input type="text" id="breed" placeholder="Boxer" value={ newTransaction.breed } onChange={handleChange}/>
         </>}
+
+        <div style={{position: 'relative'}}>
         <label htmlFor="status">Status:</label>
         <input type="text"  id="status" value={ newTransaction.status } onChange={handleChange}/>
- 
+        <div id="anim" style={{ position: 'absolute', bottom:-5, right: 330}}>
+    <span className="tooltip" data-tooltip={lines.join("")}>?</span>
+  </div>
+  </div>
         
     <p><label htmlFor="claimDetails">Enter details of claim:</label></p>
   <textarea minLength='5' id="claimDetails" name="claimDetails" rows="4" cols="50" placeholder="Please enter all relevant claim details and attach any relevant documentation."

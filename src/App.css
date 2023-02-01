@@ -98,9 +98,76 @@ button{
 button:hover {
 background:  rgb(37, 221, 37);
 color: white;
-box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); 
+}
 
-  
+.tooltip {
+  text-align: center;
+  border: 0px !important;
+  font-size: 13px;
+  position: relative;
+  display: inline-block;
+  background: red;
+  padding: 5px 12px;
+  margin: 5px;
+  border-radius: 100%;
+  color: #FFF; 
+}
+
+.tooltip:before,
+.tooltip:after {
+  position: absolute;
+  content: '';
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.tooltip:before {
+  border-width: 10px 8px 0 8px;
+  border-style: solid;
+  border-color: red transparent transparent transparent;
+  top: -15px;
+   transform: translateY(20px);
+}
+
+.tooltip:after {
+  content: attr(data-tooltip);
+  background: red;
+  width: 200px;
+  height: max-content;
+  font-size: 13px;
+  font-weight: 300;
+  top: -75px;
+  left: -10px;
+  padding: 10px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  transform: translateY(20px);
+}
+.tooltip:hover::before,
+.tooltip:hover::after {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+@keyframes shake {
+  0% { 
+    transform: rotate(2deg);
+  }
+  50% {
+   transform: rotate(-3deg);
+  }
+  70% {
+    transform: rotate(3deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+#anim:hover {
+  animation: shake 500ms ease-in-out forwards;
 }
 @media only screen and (min-width: 641px) and (max-width: 1024px){
 .container {

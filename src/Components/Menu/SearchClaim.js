@@ -19,10 +19,8 @@ const SearchClaim = (props) => {
     const doSearch  = (event) => {
         event.preventDefault();
         props.setSearchTerm(localSearchTerm);
-        console.log("localsearchterm"+localSearchTerm)
         navigate(`/find/${localSearchTerm}`);
         navigate(TransactionsTable);
-        console.log("LST"+localSearchTerm)
     }
     const clearForm = () => {
         setLocalSearchTerm("");

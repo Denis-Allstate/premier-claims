@@ -30,7 +30,6 @@ const AddOrEditClaim = () => {
                 if (response.status === 200) {
                     setIsLoading(false);
                     setInitialNewTransactionState(response.data);
-                    console.log("response data" ,response.data);
                 }
                 else {
                     console.log("something went wrong", response.status)

@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { addNewTransaction } from "../Data/DataFunction";
 
@@ -49,6 +49,12 @@ const NewClaim = (props) => {
             setMessage("Something went wrong - " + error);
         })
     } 
+    useEffect(()=>{
+        if(isUpdate){
+            setMyClaimType(newTransaction.claimType);
+             }
+        }, []);
+    // 
     
 return <>
 <div className="container" onSubmit={handleSubmit}>

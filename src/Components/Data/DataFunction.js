@@ -11,7 +11,12 @@ import axios from "axios";
                 headers: {"Accept" : "application/json"}
                 })
     }
-   
+    export const getAllClaimsForSurname  = (lastName) => {
+        return axios({url : "http://localhost:8080/api/claim/"+lastName,
+                method: "GET", 
+                headers: {"Accept" : "application/json"}
+                })
+    }
     export const getAllClaimsForStatus = (claimStatus) => {
         return axios({url : "http://localhost:8080/api/claim?status=Open",
                 method: "GET", 

@@ -42,7 +42,7 @@ const Open = ()=>{
             {claims.map( (claim, index) => {
                 return <TransactionsRow key={index} claim_id={claim.id} surname={claim.lastName}
                 status = {claim.status}  claimdate = {claim.claimDate} 
-                claimamount={claim.claimAmount}   />
+                claimamount={claim.claimAmount} id={claim.id}  />
             }   )   } 
         </tbody>
     </table>

@@ -39,6 +39,7 @@
     ]
   },
   "devDependencies": {
+    "jest": "^29.4.1",
     "jest-watch-typeahead": "^0.6.5"
   }
 }

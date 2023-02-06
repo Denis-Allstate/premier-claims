@@ -4,8 +4,10 @@ import { addNewTransaction } from "../Data/DataFunction";
 
 const NewClaim = (props) => {
     const lines = ["1. Open - New Claim " , 
-        " 2. Pending - Currently being worked on/Awaiting Payment " ,
-        " 3. Rejected - Above threshold or not valid claim " ,
+        " 2. Pending - Currently",
+         "being worked on/Awaiting Payment " ,
+        " 3. Rejected - Above threshold" , 
+        "or not valid claim " ,
         " 4. Closed - Paid"
       ];
       
@@ -29,7 +31,6 @@ const NewClaim = (props) => {
         dispatch({field : event.target.id, value : event.target.value});
        setMyClaimType(event.target.value);
     }
-    
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -37,13 +38,12 @@ const NewClaim = (props) => {
         addNewTransaction(newTransaction)
         .then(response =>{
             if (response.status === 200){
-                setMessage("New Transaction Added with id: " +response.data.id);
+                {!isUpdate ? setMessage("New Transaction Added with id: " +response.data.id) :  
+                setMessage("Updated Transaction with id: " +response.data.id)}
             }
             else{
-        
                 setMessage("Something went wrong - status code was "+response.status);
             }
-        
         })
         .catch(error=>{
             setMessage("Something went wrong - " + error);
@@ -53,8 +53,7 @@ const NewClaim = (props) => {
         if(isUpdate){
             setMyClaimType(newTransaction.claimType);
              }
-        }, []);
-    // 
+        }, [isUpdate]);
     
 return <>
 <div className="container" onSubmit={handleSubmit}>
@@ -119,10 +118,17 @@ return <>
         </>}
 
         <div style={{position: 'relative'}}>
-        <label htmlFor="status">Status:</label>
-        <input type="text"  id="status" value={ newTransaction.status } onChange={handleChange}/>
-        <div id="anim" style={{ position: 'absolute', bottom:-5, right: 330}}>
-    <span className="tooltip" data-tooltip={lines.join("")}>?</span>
+         <p>Status:</p>
+            <select id= "status" value={newTransaction.status} onChange={handleChange} >
+                <option value="" disabled={true}> ---select---</option>
+                <option value="Open">Open</option>
+                <option value="Pending">Pending</option>
+                <option value ="Rejected">Rejected</option>
+                <option value ="Closed">Closed</option>
+            </select>
+    
+        <div id="anim" style={{"white-space":"pre", "text-align" :"left", position: 'absolute', bottom:-5, right: 330}}>
+    <span className="tooltip" data-tooltip={lines.join("\n")} data-html={true}>?</span>
   </div>
   </div>
         

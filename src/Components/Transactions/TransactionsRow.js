@@ -7,8 +7,10 @@ const [isUpdateAvailable, setIsUpdateAvailable] = useState(false);
 useEffect(()=> {
     if(props.status === "Open" || props.status === "Pending"){
         setIsUpdateAvailable (true);
+    }else{
+        setIsUpdateAvailable (false);
     }
-}, []);
+}, [props.status]);
     return (
         <tr>
             <td>{props.claim_id}</td>
@@ -17,7 +19,7 @@ useEffect(()=> {
             <td>{props.claimdate}</td>
             <td>{props.claimamount}</td>
             <td>
-                <Link to={"/add/" +props.claim_id}>
+                <Link to={"/add/" +props.id}>
                     {isUpdateAvailable && <> <span className="update">Update</span></>}
                 </Link>
             </td>

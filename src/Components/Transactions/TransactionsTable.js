@@ -8,7 +8,6 @@ const TransactionsTable = (props) => {
     const [claims, setClaims] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-
     useEffect(()=>{
         
         getAllClaims()
@@ -63,7 +62,7 @@ return (<div>
                 .map( (claim, index) => {
                 return selectedClaim && <TransactionsRow key={index} claim_id={claim.claimId} surname={claim.lastName}
                 status = {claim.status}  claimdate = {claim.claimDate} 
-                claimamount={claim.claimAmount}   />
+                claimamount={claim.claimAmount} id={claim.id}  />
             }   )   }
         
                 {claims
@@ -71,8 +70,9 @@ return (<div>
                 .map( (claim, index) => {
                 return <TransactionsRow key={index} claim_id={claim.claimId} surname={claim.lastName}
                 status = {claim.status}  claimdate = {claim.claimDate} 
-                claimamount={claim.claimAmount}   />
+                claimamount={claim.claimAmount}   id={claim.id}/>
             }   )   }
+
             </tbody> 
     </table>
     </div>  

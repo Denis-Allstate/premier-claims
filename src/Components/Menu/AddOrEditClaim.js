@@ -18,6 +18,7 @@ const AddOrEditClaim = () => {
        }else{
         setChangingState(false);
         const selectedClaimId =params.claim_id;
+        console.log("claim_id"+params.id);
         if (selectedClaimId == null){
             setIsLoading(false);
             setChangingState(true);

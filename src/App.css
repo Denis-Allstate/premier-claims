@@ -133,7 +133,7 @@ box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 .tooltip:after {
   content: attr(data-tooltip);
   background: red;
-  width: 200px;
+  width: 220px;
   height: max-content;
   font-size: 13px;
   font-weight: 300;

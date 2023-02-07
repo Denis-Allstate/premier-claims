@@ -18,6 +18,7 @@ useEffect(()=> {
             <td>{props.status}</td>
             <td>{props.claimdate}</td>
             <td>{props.claimamount}</td>
+            <td>{props.claimReason}</td>
             <td>
                 <Link to={"/add/" +props.id}>
                     {isUpdateAvailable && <> <span className="update">Update</span></>}

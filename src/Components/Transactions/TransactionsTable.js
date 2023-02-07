@@ -7,9 +7,7 @@ const TransactionsTable = (props) => {
 
     const [claims, setClaims] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-
     useEffect(()=>{
-        
         getAllClaims()
             .then ( response => {
                 if (response.status === 200) {
@@ -73,11 +71,18 @@ return (<div>
                 claimamount={claim.claimAmount}   id={claim.id}/>
             }   )   }
 
+                {claims
+                .filter (claim =>  claim.lastName === props.searchTerm)
+                .map( (claim, index) => {
+                return <TransactionsRow key={index} claim_id={claim.claimId} surname={claim.lastName}
+                status = {claim.status}  claimdate = {claim.claimDate} 
+                claimamount={claim.claimAmount}   id={claim.id}/>
+            }   )   }
+
             </tbody> 
     </table>
     </div>  
     </div>
 )
 }
-
 export default TransactionsTable;

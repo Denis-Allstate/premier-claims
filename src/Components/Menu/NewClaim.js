@@ -77,7 +77,7 @@ return <>
     <input type="tel" id="phone" name="phone" placeholder="0800-123-456" value={newTransaction.phone} onChange={handleChange}/>
 
     
-        <p>Select claim type:</p>
+        <label>Select claim type:</label>
             <select id= "claimType" value={newTransaction.claimType} onChange={handleChangeType} >
                 <option value="" disabled={true}> ---select---</option>
                 <option value="Property">Property</option>
@@ -85,8 +85,9 @@ return <>
                 <option value ="Pet">Pet</option>
             </select>
     <br />
-    {/* <label htmlFor="claimAmount">Amount:</label>
-        <input type="text"  id="claimAmount" value={newTransaction.claimAmount} onChange={handleChange}/> */}
+    <label htmlFor="claimReason" >Reason for claim: </label>
+    <input maxLength='15' type="claimReason" name="claimReason" id="claimReason" placeholder="Short description of Claim reason" required value={newTransaction.claimReason} onChange={handleChange} />
+
   <div style={{position: 'relative'}}>
   <label htmlFor="claimAmount">Amount:</label>
   <input type="text" id="claimAmount" value={newTransaction.claimAmount} onChange={handleChange} />
@@ -118,7 +119,7 @@ return <>
         </>}
 
         <div style={{position: 'relative'}}>
-         <p>Status:</p>
+         <label>Status:</label>
             <select id= "status" value={newTransaction.status} onChange={handleChange} >
                 <option value="" disabled={true}> ---select---</option>
                 <option value="Open">Open</option>

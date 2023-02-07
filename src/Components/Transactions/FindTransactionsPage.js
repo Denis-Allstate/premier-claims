@@ -8,6 +8,7 @@ const FindTransactionsPage = (props) => {
 const params = useParams();
 
 useEffect( ()=> {
+    console.log(props)
     if (params.claim_id != null && params.claim_id !== props.searchTerm) {
         props.setSearchTerm(params.claim_Id);
     }

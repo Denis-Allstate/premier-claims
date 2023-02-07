@@ -34,6 +34,7 @@ const Archive =() =>{
                 <th>Status</th>
                 <th>Claim date</th>
                 <th>Claim Amount</th>
+                <th>Claim Reason</th>
                 <th></th>
             </tr>
         </thead>
@@ -42,7 +43,7 @@ const Archive =() =>{
                 .map( (claim, index) => {
                 return <TransactionsRow key={index} claim_id={claim.id} surname={claim.lastName}
                 status = {claim.status}  claimdate = {claim.claimDate} 
-                claimamount={claim.claimAmount}   />
+                claimamount={claim.claimAmount} claimReason ={claim.claimReason}  />
             }   )   }
              
         </tbody>

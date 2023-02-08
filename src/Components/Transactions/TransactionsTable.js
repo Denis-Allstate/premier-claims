@@ -51,6 +51,7 @@ return (<div>
                 <th>Status</th>
                 <th>Claim date</th>
                 <th>Claim Amount</th>
+                <th>Claim Reason</th>
                 <th></th>
             </tr>
         </thead>
@@ -60,7 +61,7 @@ return (<div>
                 .map( (claim, index) => {
                 return selectedClaim && <TransactionsRow key={index} claim_id={claim.claimId} surname={claim.lastName}
                 status = {claim.status}  claimdate = {claim.claimDate} 
-                claimamount={claim.claimAmount} id={claim.id}  />
+                claimamount={claim.claimAmount} id={claim.id} claimReason ={claim.claimReason} />
             }   )   }
         
                 {claims
@@ -68,7 +69,7 @@ return (<div>
                 .map( (claim, index) => {
                 return <TransactionsRow key={index} claim_id={claim.claimId} surname={claim.lastName}
                 status = {claim.status}  claimdate = {claim.claimDate} 
-                claimamount={claim.claimAmount}   id={claim.id}/>
+                claimamount={claim.claimAmount}   id={claim.id} claimReason ={claim.claimReason}/>
             }   )   }
 
                 {claims
@@ -76,7 +77,7 @@ return (<div>
                 .map( (claim, index) => {
                 return <TransactionsRow key={index} claim_id={claim.claimId} surname={claim.lastName}
                 status = {claim.status}  claimdate = {claim.claimDate} 
-                claimamount={claim.claimAmount}   id={claim.id}/>
+                claimamount={claim.claimAmount}   id={claim.id} claimReason ={claim.claimReason}/>
             }   )   }
 
             </tbody> 

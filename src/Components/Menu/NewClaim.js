@@ -86,7 +86,7 @@ return <>
             </select>
     <br />
     <label htmlFor="claimReason" >Reason for claim: </label>
-    <input maxLength='15' type="claimReason" name="claimReason" id="claimReason" placeholder="Short description of Claim reason" required value={newTransaction.claimReason} onChange={handleChange} />
+    <input maxLength='25' type="claimReason" name="claimReason" id="claimReason" placeholder="Short description of Claim reason" required value={newTransaction.claimReason} onChange={handleChange} />
 
   <div style={{position: 'relative'}}>
   <label htmlFor="claimAmount">Amount:</label>
